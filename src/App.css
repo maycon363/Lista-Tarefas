@@ -1,19 +1,22 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   padding: 30px;
   color: #333;
-  background-image: url('./img/codigonbinario.webp');
+  background-image: url('./img/codigo-programacao.jpg');
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .app {
   max-width: 600px;
-  margin: 0 auto 300px;
+  margin: 0 auto 50px;
   background-color: #efefef;
   padding: 20px 30px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 h1 {
@@ -28,7 +31,12 @@ p {
   margin: 10px 0;
 }
 
-input {
+input, select {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -41,7 +49,7 @@ button {
   border-radius: 3px;
   cursor: pointer;
   opacity: .8;
-  transition: 3s;
+  transition: opacity 0.3s ease;
 }
 
 button:hover {
@@ -63,6 +71,13 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* permite que quebre em telas menores */
+  gap: 10px;
+}
+
+.todo .content {
+  flex: 1;
+  min-width: 200px;
 }
 
 .complete {
@@ -75,29 +90,34 @@ button:hover {
 
 .todo-form {
   padding-bottom: 1.5rem;
-
 }
 
-input, select {
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  width: 100%;
-}
-
-.filter, .search {
+.filter,
+.search {
   border-bottom: 1px solid #555;
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
 
+/* Aqui começa a responsividade */
 .filter-options {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   gap: 3rem;
+  flex-wrap: wrap;
 }
 
 .filter-options div {
-  flex: 1 1 0;
+  flex: 1 1 100%;
+}
+
+@media (min-width: 600px) {
+  .filter-options {
+    flex-direction: row;
+  }
+
+  .filter-options div {
+    flex: 1 1 0;
+  }
 }
